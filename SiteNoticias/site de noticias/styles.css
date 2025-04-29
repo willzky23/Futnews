@@ -1,0 +1,199 @@
+/* Basic Reset: Resets margins, paddings, and sets box-sizing to border-box globally */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc; /* Light background color for contrast */
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header styles */
+header {
+    background-color: rgb(85, 26, 139); /* Dark purple background */
+    color: #ffffff;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for header */
+}
+
+h1 {
+    font-family: "Righteous", sans-serif;
+    font-size: 36px;
+    color: rgb(255, 255, 255); /* White text color for title */
+}
+
+/* News container */
+.news-container {
+    max-width: 800px; /* Maximum width for the news container */
+    width: 100%;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow the items to wrap in multiple columns */
+    gap: 15px; /* Space between items */
+}
+
+/* News list */
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Individual news items */
+li {
+    background-color: rgb(85, 26, 139); /* Dark purple background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for each news item */
+    transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+    flex: 1 1 calc(50% - 15px); /* Each item takes up 50% of the container width, with space between them */
+    box-sizing: border-box;
+}
+
+li:hover {
+    transform: scale(1.02); /* Slightly increase the size of the item when hovered */
+}
+
+/* News title */
+.news-title {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.news-title:hover {
+    color: rgb(0, 136, 255); /* Light blue color on hover */
+}
+
+/* View Images link */
+.view-images {
+    color: #ffccff; /* Light pastel pink for contrast */
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.view-images:hover {
+    color: rgb(0, 136, 255); /* Light blue color on hover */
+}
+
+/* Footer styles */
+footer {
+    background-color: rgb(85, 26, 139); /* Dark purple background */
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Shadow for footer */
+}
+
+/* Remove underline and change text color on hover for links */
+a:hover {
+    text-decoration: none;
+    color: #000000; /* Change color to black on hover */
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    header {
+        font-size: 20px; /* Reduce font size for smaller screens */
+    }
+
+    h1 {
+        font-size: 28px; /* Reduce title font size */
+    }
+
+    .news-title {
+        font-size: 16px; /* Reduce news title font size */
+    }
+
+    .view-images {
+        font-size: 12px; /* Reduce font size of "View Images" link */
+    }
+
+    li {
+        flex: 1 1 100%; /* On smaller screens, make each item take up the full width */
+    }
+}
+
+/* News description styles */
+.news-description {
+    font-size: 14px;
+    color: #ddd; /* Lighter text color for description */
+    margin-top: 10px;
+    line-height: 1.5; /* Better readability with line-height */
+}
+
+/* Duplicate styles for the list items for redundancy (can be removed if not needed) */
+li {
+    background-color: rgb(85, 26, 139); /* Dark purple background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    flex: 1 1 calc(50% - 15px); /* Each item takes up 50% of container width */
+    box-sizing: border-box;
+}
+
+li:hover {
+    transform: scale(1.02); /* Slightly enlarge item on hover */
+}
+
+.news-title {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.news-title:hover {
+    color: rgb(0, 136, 255); /* Light blue color on hover */
+}
+
+.view-images {
+    color: #ffccff; /* Light pastel color */
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.view-images:hover {
+    color: rgb(0, 136, 255); /* Light blue color on hover */
+}
+
+.sobre {
+    color: #000000; /* Black text color */
+    font-size: 18px; /* Font size 18px */
+    position: absolute; /* Absolute positioning */
+    left: 150px; /* 150px from the left */
+    top: 35px; /* 35px from the top */
+}
+
+/* Hover effect for the "About" section */
+.sobre:hover {
+    color: #861890; /* Changes text color on hover to a purple shade */
+}
+
+.home {
+    color: #ffffff; /* Black text color */
+    font-size: 18px; /* Font size 18px */
+    position: absolute; /* Absolute positioning */
+    left: 230px; /* 150px from the left */
+    top: 35px; /* 35px from the top */
+}
