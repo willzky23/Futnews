@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Specifies the language of the page content as English -->
+<head>
+    <meta charset="UTF-8"> <!-- Declares the character encoding for the webpage as UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive, adjusting to different screen sizes -->
+    <title>Login</title> <!-- Sets the title of the webpage to "Login" -->
+    <link rel="stylesheet" href="login.css"> <!-- Links the external CSS file (login.css) to style the page -->
+</head>
+<body>
+    <!-- Main container for the login form -->
+    <div class="login-container"> <!-- Container that holds the login form -->
+        <h2>Login</h2> <!-- Heading for the login form -->
+        <form id="loginForm"> <!-- Form element with an ID "loginForm" -->
+            <!-- Input field for the email -->
+            <input type="email" id="email" placeholder="E-mail" required> 
+            <!-- Input field for the password -->
+            <input type="password" id="password" placeholder="Senha" required> 
+            <!-- Submit button to send the form data -->
+            <button type="submit">To enter</button>
+            <!-- A paragraph below the form with a link to the registration page -->
+            <p class="acessar">Don't have an account? <a href="form_cadastro.html">Click here</a></p>
+        </form>
+    </div>
+
+    <a href="sobre.html"><p class="sobre">About</p></a>
+        <a href="ladding.html"><p class="home">Home</p></a>
+
+    <!-- Firebase SDKs for authentication -->
+    <script type="module">
+        // Imports necessary Firebase components from the Firebase SDK
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js';
+
+        // Firebase configuration object containing keys for your Firebase project
+        const firebaseConfig = {
+            apiKey: "AIzaSyCb9g2VHFC-uo3JZfUP3AWDqF2eWHUDnZ0", // API key for your Firebase project
+            authDomain: "projeto-sistema-de-aposta.firebaseapp.com", // Authentication domain for your Firebase project
+            databaseURL: "https://projeto-sistema-de-aposta-default-rtdb.firebaseio.com/", // Realtime database URL
+            projectId: "projeto-sistema-de-aposta", // Project ID in Firebase
+            storageBucket: "projeto-sistema-de-aposta.appspot.com", // Firebase storage bucket
+            messagingSenderId: "924389747463", // Messaging sender ID for push notifications
+            appId: "1:924389747463:web:1e72447c2ea59506a173a2" // App ID for your Firebase project
+        };
+
+        // Initializes Firebase with the provided configuration
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app); // Initializes Firebase Authentication
+
+        // Event listener for the form submission
+        document.getElementById("loginForm").addEventListener("submit", async function(e) {
+            e.preventDefault(); // Prevents the default form submission behavior (page reload)
+
+            // Retrieves values from the input fields in the form
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                // Attempts to sign in with the provided email and password using Firebase Authentication
+                await signInWithEmailAndPassword(auth, email, password);
+                // Redirects the user to the news page if login is successful
+                window.location.href = "paginadenoticias.html";
+            } catch (error) {
+                console.error("Error logging in:", error.code, error.message); // Logs any errors in the console for debugging
+                // Displays an appropriate error message based on the error code returned by Firebase
+                switch (error.code) {
+                    case 'auth/user-not-found': // Case when the user is not found in the database
+                        alert("User not found. Check email.");
+                        break;
+                    case 'auth/wrong-password': // Case when the password is incorrect
+                        alert("Incorrect password. Please try again.");
+                        break;
+                    case 'auth/invalid-email': // Case when the email format is invalid
+                        alert("Invalid email. Please check and try again.");
+                        break;
+                    default: // Default case for other errors
+                        alert("Error: " + error.message); // Shows the error message
+                }
+            }
+        });
+    </script>
+</body>
+</html>

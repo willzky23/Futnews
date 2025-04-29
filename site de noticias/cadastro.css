@@ -1,0 +1,129 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif; /* Sets the font for the entire page to Arial or the default sans-serif font */
+    background: url('imgs/artistic-blurry-colorful-wallpaper-background.jpg') no-repeat center center fixed; /* Sets the background image and keeps it fixed while scrolling */
+    background-size: cover; /* Ensures the background image covers the entire screen */
+    display: flex; /* Uses Flexbox layout for positioning the content */
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center; /* Centers the content vertically */
+    height: 100vh; /* Makes the body take up the full viewport height */
+    margin: 0; /* Removes the default margin of the body */
+    color: white; /* Sets the text color to white */
+}
+
+/* Form container styles */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Sets a semi-transparent white background */
+    border-radius: 10px; /* Rounds the corners of the container for a smoother look */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Adds a shadow behind the container for a 3D effect */
+    width: 350px; /* Sets a fixed width for the form container */
+    height: 335px; /* Sets a fixed height for the form container */
+    padding: 30px; /* Adds padding inside the container for spacing */
+    text-align: center; /* Centers the text inside the container */
+    position: relative; /* Enables positioning of elements inside the container */
+}
+
+/* Title styles */
+.form-container h2 {
+    color: #1a73e8; /* Sets the color of the title text to a blue shade */
+    margin-bottom: 20px; /* Adds space below the title */
+    font-size: 24px; /* Increases the size of the title */
+}
+
+/* Input field styles */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Makes the input fields stretch to fill the container */
+    padding: 12px; /* Adds padding inside the input fields for better usability */
+    margin: 10px 0; /* Adds space above and below the input fields */
+    border: 2px solid #1a73e8; /* Sets a blue border around the input fields */
+    border-radius: 5px; /* Rounds the corners of the input fields */
+    outline: none; /* Removes the default outline when the input is focused */
+    box-sizing: border-box; /* Ensures the padding and border are included in the element’s total width and height */
+    transition: border-color 0.3s; /* Adds a smooth transition effect for the border color when focused */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #155ab2; /* Changes the border color to a darker blue when the input is focused */
+}
+
+/* Button styles */
+button {
+    background-color: #1a73e8; /* Sets the background color of the button to blue */
+    color: #ffffff; /* Sets the text color of the button to white */
+    border: none; /* Removes the border around the button */
+    padding: 12px; /* Adds padding inside the button for a more comfortable click area */
+    width: 100%; /* Makes the button stretch to fill the width of the container */
+    border-radius: 5px; /* Rounds the corners of the button */
+    font-weight: bold; /* Makes the button text bold */
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+    margin-top: 16px; /* Adds space above the button */
+    transition: background-color 0.3s, transform 0.2s; /* Adds smooth transition effects for background color and scaling */
+}
+
+button:hover {
+    background-color: #155ab2; /* Changes the button’s background color when hovered */
+    transform: scale(1.05); /* Slightly enlarges the button when hovered */
+}
+
+/* Additional styles for text under the form */
+.form-container p {
+    color: #666; /* Sets the text color to a softer gray */
+    margin-top: 10px; /* Adds space above the paragraph */
+    font-size: 14px; /* Reduces the font size */
+}
+
+/* Adding icons to the input fields (for example, using Font Awesome or similar) */
+input[type="text"].icon,
+input[type="email"].icon,
+input[type="password"].icon {
+    background-image: url('icon-path'); /* Adds a background image (icon) to the input field */
+    background-repeat: no-repeat; /* Prevents the icon from repeating */
+    background-position: 10px center; /* Positions the icon inside the input field */
+    padding-left: 40px; /* Adds extra space on the left side to make room for the icon */
+}
+
+/* Styles for the "clique" link */
+.clique {
+    text-decoration: none; /* Removes the underline from the link */
+}
+
+.clique:visited {
+    text-decoration: none; /* Ensures the underline remains removed even after visiting the link */
+}
+
+/* Styles for the "conta" link */
+.conta {
+    position: relative; /* Positions the link relative to its normal position */
+    top: 5px; /* Moves the link 5px down from its normal position */
+}
+
+.sobre {
+    color: #ffffff; /* Black text color */
+    font-size: 18px; /* Font size 18px */
+    position: absolute; /* Absolute positioning */
+    left: 150px; /* 150px from the left */
+    top: 35px; /* 35px from the top */
+}
+
+/* Hover effect for the "About" section */
+.sobre:hover {
+    color: #861890; /* Changes text color on hover to a purple shade */
+}
+
+.home {
+    color: #ffffff; /* Black text color */
+    font-size: 18px; /* Font size 18px */
+    position: absolute; /* Absolute positioning */
+    left: 230px; /* 150px from the left */
+    top: 35px; /* 35px from the top */
+}
+
+/* Hover effect for the "About" section */
+.sobre:hover {
+    color: #861890; /* Changes text color on hover to a purple shade */
+}
+

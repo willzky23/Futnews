@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta information for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Football News</title>
+
+    <!-- Link to external CSS files -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Link to Google Fonts to use a custom font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="ladding.html"><p class="home">Home</p></a>
+
+    <!-- Header of the page -->
+    <header>
+        <h1>Latest Football News</h1> <!-- Main title of the page -->
+    </header>
+
+    <!-- Main content of the page -->
+    <main>
+        <section class="news-container">
+            <ul id="noticias"></ul> <!-- Unordered list to hold the news items -->
+        </section>
+    </main>
+    
+    <!-- Footer section -->
+    <footer>© 2024 Football News. All rights reserved.</footer>
+
+    <!-- JavaScript to fetch and display news -->
+    <script>
+        // URL of the RSS feed containing the football news (using CORS proxy for fetching)
+        const url = 'https://cors-anywhere.herokuapp.com/https://feeds.bbci.co.uk/sport/football/rss.xml';
+
+        // Async function to fetch the latest news
+        async function fetchNews() {
+            try {
+                const response = await fetch(url); // Fetch the RSS feed
+                const data = await response.text(); // Convert response to text
+
+                // Parse the RSS feed XML data
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, 'text/xml');
+
+                // Get all the "item" elements from the XML (each represents a news article)
+                const items = xmlDoc.getElementsByTagName('item');
+                const lista = document.getElementById('noticias'); // Get the unordered list element by ID
+                lista.innerHTML = ''; // Clear any existing news content
+
+                // Loop through each item and generate HTML for it
+                for (let i = 0; i < items.length; i++) {
+                    const title = items[i].getElementsByTagName('title')[0].textContent; // Get the title of the news item
+                    const link = items[i].getElementsByTagName('link')[0].textContent; // Get the link to the news article
+                    const description = items[i].getElementsByTagName('description')[0].textContent; // Get the description of the article
+
+                    // Generate the Google search URL for images related to the news title
+                    const searchImgUrl = `https://www.google.com/search?hl=en&tbm=isch&q=${encodeURIComponent(title)}`;
+
+                    // HTML template for each news item
+                    const listItem = `
+                        <li>
+                            <a href="${link}" target="_blank" class="news-title">${title}</a> <!-- Title linked to the article -->
+                            <p class="news-description">${description}</p> <!-- Description of the article -->
+                            <a href="${searchImgUrl}" target="_blank" class="view-images">View Images</a> <!-- Link to Google image search for the article -->
+                        </li>
+                    `;
+                    lista.innerHTML += listItem; // Add the list item to the unordered list
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error); // Log any errors that occur
+            }
+        }
+
+        // Call the fetchNews function when the page loads to load the initial set of news
+        fetchNews();
+
+        // Set an interval to automatically update the news every 5 minutes (300000 milliseconds)
+        setInterval(fetchNews, 300000);
+    </script>
+</body>
+</html>
